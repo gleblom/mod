@@ -18,6 +18,6 @@ public class RegistryHandler {
         ModEntityType.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
     public static final RegistryObject<Item> STAND_ARROW = ITEMS.register("stand_arrow",
-            () -> new StandArrowItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC),1));
+            () -> new StandArrowItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC),0));
 
 }
