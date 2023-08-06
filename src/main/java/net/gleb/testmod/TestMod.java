@@ -14,6 +14,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
+import software.bernie.geckolib3.GeckoLib;
 
 @Mod(TestMod.MOD_ID)
 public class TestMod
@@ -28,6 +29,7 @@ public class TestMod
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
         ModEntityType.register(modEventBus);
+        GeckoLib.initialize();
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
