@@ -3,12 +3,15 @@ package net.gleb.testmod.item.custom;
 
 
 import net.gleb.testmod.item.ModItems;
+import net.gleb.testmod.world.entity.ModEntityType;
 import net.gleb.testmod.world.entity.projectile.StandArrow;
+import net.minecraft.server.commands.ExecuteCommand;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
@@ -55,6 +58,7 @@ public class StandArrowItem extends ArrowItem {
     public boolean hurtEnemy(ItemStack itemStack, LivingEntity livingEntity, LivingEntity livingEntity1) {
         if(getRandomNumber() == 1){
             livingEntity.addEffect(new MobEffectInstance(MobEffects.HEAL, 200));
+
 
         }
         else

@@ -9,7 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 
 public class StandEntityRenderer extends MobRenderer<StandEntity, StandEntityModel<StandEntity>> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(TestMod.MOD_ID, "textures/entity/stand.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(TestMod.MOD_ID, "textures/entity/stand/stand.png");
     public StandEntityRenderer(EntityRendererProvider.Context context) {
         super(context, new StandEntityModel<>(context.bakeLayer(StandEntityModel.LAYER_LOCATION)), 1.0f);
     }

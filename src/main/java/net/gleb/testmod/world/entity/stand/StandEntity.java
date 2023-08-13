@@ -5,23 +5,28 @@ import net.gleb.testmod.world.entity.ModEntityType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.animal.Pig;
+import net.minecraft.world.entity.animal.Wolf;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import org.jetbrains.annotations.Nullable;
 
-public class StandEntity extends Animal {
+public class StandEntity extends TamableAnimal {
     public StandEntity(EntityType<StandEntity> type, Level level) {
         super(type, level);
+        this.setTame(true);
     }
+
     public StandEntity(Level level, double x, double y, double z){
         this(ModEntityType.STAND_ENTITY.get(), level);
         setPos(x, y, z);
@@ -46,13 +51,20 @@ public class StandEntity extends Animal {
         this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 6.0F));
         this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(7, new TemptGoal(this, 1.0D, Ingredient.of(ModItems.ZIRCON.get()),false));
+        this.goalSelector.addGoal(8, new FollowOwnerGoal(this, 1.0D, 10.0F, 2.0F, true));
     }
     public static AttributeSupplier.Builder createAttributer(){
-        return Pig.createAttributes();
+        return Wolf.createAttributes();
     }
     public static boolean canSpawn(EntityType<StandEntity> entityType, LevelAccessor levelAccessor,
                                    MobSpawnType mobSpawnType, BlockPos blockPos, RandomSource randomSource){
         return Animal.checkAnimalSpawnRules(entityType, levelAccessor, mobSpawnType, blockPos, randomSource);
 
     }
+    @Override
+    public void setTame(boolean tame){
+        super.setTame(tame);
+    }
+
+
 }
