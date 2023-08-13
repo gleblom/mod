@@ -18,10 +18,10 @@ public class ModEntityType {
             () -> EntityType.Builder.<StandArrow>of(StandArrow::new, MobCategory.MISC).sized(0.5F,
                     05F).clientTrackingRange(4).updateInterval(20).build(new
                     ResourceLocation(TestMod.MOD_ID, "stand_arrow").toString()));
-    public static  final RegistryObject<EntityType<StandEntity>> STAND = ENTITY_TYPES.register("stand",
-            () -> EntityType.Builder.of(StandEntity::new, MobCategory.CREATURE).sized(0.5F,
-                    05F).clientTrackingRange(4).updateInterval(20).build(new
-                    ResourceLocation(TestMod.MOD_ID, "stand_arrow").toString()));
+    public static final RegistryObject<EntityType<StandEntity>> STAND_ENTITY = ENTITY_TYPES.register
+            ("stand_entity",() -> EntityType.Builder.<StandEntity>of(StandEntity::new, MobCategory.CREATURE).
+                    sized(1.0f,1.0f).build(new ResourceLocation(TestMod.MOD_ID, "stand")
+                            .toString()));
 
     public static void register(IEventBus eventBus){
         ENTITY_TYPES.register(eventBus);

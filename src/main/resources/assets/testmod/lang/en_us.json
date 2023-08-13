@@ -2,5 +2,7 @@
   "item.testmod.zircon": "Zircon",
   "item.testmod.stand_arrow": "Stand Arrow",
   "entity.testmod.stand_arrow": "Stand Arrow",
-  "item.testmod.stone_mask": "Stone Mask"
+  "item.testmod.stone_mask": "Stone Mask",
+  "entity.testmod.stand": "Stand",
+  "item.testmod.stand_egg": "Stand Egg"
 }
