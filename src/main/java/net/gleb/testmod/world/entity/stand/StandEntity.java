@@ -1,5 +1,6 @@
 package net.gleb.testmod.world.entity.stand;
 
+import net.gleb.testmod.goals.StandTargetGoal;
 import net.gleb.testmod.world.entity.ModEntityType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -12,6 +13,9 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
+import net.minecraft.world.entity.Mob;
+
+import java.util.function.Predicate;
 
 
 public class StandEntity extends Animal {
@@ -32,6 +36,8 @@ public class StandEntity extends Animal {
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new TemptGoal(this, 1.0D, Ingredient.EMPTY, false));
+        this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.0D, true));
+        this.targetSelector.addGoal(1, new StandTargetGoal(this, true));
     }
     public static AttributeSupplier.Builder createAttributer(){
         return Wolf.createAttributes();
@@ -41,7 +47,5 @@ public class StandEntity extends Animal {
     @Override
     public AgeableMob getBreedOffspring(ServerLevel p_146743_, AgeableMob p_146744_) {
         return null;
-    }
-    public void StandAttack(Player player){
     }
 }
